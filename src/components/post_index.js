@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { fetchPost } from '../actions/index';
 
@@ -14,7 +13,14 @@ class PostsIndex extends Component {
   
   render(){
     return(
-      <div><h1> list of Post</h1> </div>  
+      <div>
+        <div>
+          link
+        </div>
+        
+        <h1> list of Post</h1> </div>  
+        
+      
     );
   }
 }
@@ -27,9 +33,10 @@ THE BOTTON
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({fetchPost},dispatch);
 // }
-
 // export default connect(null, mapDispatchToProps)(PostsIndex);
+
 //AND EVEN MORE SINCE FETCHPOST KEY AND VALUE ARE WRITEN THE SAME WE
 // CAN replace the {fetchPost: fetchPost} for this {fetchPost}
 //export default connect(null, {fetchPost: fetchPost})(PostsIndex);
+
 export default connect(null, { fetchPost })(PostsIndex);
