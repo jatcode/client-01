@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import  {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import { postReducer }from '../reducers/reducer_post'
 import { fetchPost } from '../actions/index';
 
 
@@ -12,6 +14,19 @@ class PostsIndex extends Component {
     this.props.fetchPost();
   }
   
+  // renderPosts(){
+  //   this.props.posts.map((post)=>{
+  //     return (
+  //       <li key={post.id}>
+  //         <span>{post.categories}</span>
+  //       </li>
+  //     );
+  //   });
+  // }
+  // <ul>
+  //   {this.renderPosts()}
+  // </ul>
+  
   render(){
     return(
       <div>
@@ -20,7 +35,7 @@ class PostsIndex extends Component {
             Add new Post
           </Link>
         </div>
-        <h1> list of Post</h1> 
+        <h3>Posts</h3> 
       </div>  
     );
   }
@@ -30,14 +45,21 @@ class PostsIndex extends Component {
 WE ARE REPLACING THE 2 STEPS BELOW FORT THE MORE CONVENIENT SINGLE OBJECT AT
 THE BOTTON
  */
- 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({fetchPost},dispatch);
-// }
-// export default connect(null, mapDispatchToProps)(PostsIndex);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchPost},dispatch);
+}
+export default connect(null, mapDispatchToProps)(PostsIndex);
 
+// function mapStateToProps(state) { 
+//   console.log(state);
+//   return { posts: state.posts.all }
+// };
 //AND EVEN MORE SINCE FETCHPOST KEY AND VALUE ARE WRITEN THE SAME WE
 // CAN replace the {fetchPost: fetchPost} for this {fetchPost}
-//export default connect(null, {fetchPost: fetchPost})(PostsIndex);
+//export default connect(null, {fetchPost: fetchPost})(PostsIndex);  //first form
 
-export default connect(null, { fetchPost })(PostsIndex);
+// export default connect(null, { fetchPost })(PostsIndex);  // second form 
+
+ //export default connect(mapStateToProps(), { fetchPost })(PostsIndex);  // second form 
+ 
+
