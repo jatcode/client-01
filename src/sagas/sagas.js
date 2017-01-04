@@ -7,7 +7,6 @@ import axios from 'axios';
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=jatas123';
 function createPost(props) {
-  console.log('en create post: ',props);
   return  axios
       .post(`${ROOT_URL}/posts/${API_KEY}`, props)
       .then((data)=>{
@@ -23,7 +22,6 @@ function createPost(props) {
 
 function* callCreateNewPost({values, resolve, reject, ...rest}){  
   const result = yield  call(createPost,values);
-  console.log('resultadon en final',result);
   //ONCE I HAVE THE RESULT  its time to update the state
   if(result.status === 201){
     yield put({type:'CREATE_POST_DONE', result});

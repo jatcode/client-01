@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
-import {  Message} from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router';
 
 import {  createPost } from '../actions/index';
 
-class PostNew extends Component {
-   
+class PostNew extends Component {   
    myInput ({input, meta:{ touched, error }, ...custom}) {
      const hasError = touched && error ;
     return(
@@ -35,8 +34,7 @@ class PostNew extends Component {
   static contexTypes = {
     router : PropTypes.object
   };
-  submit(values, dispatch ){
-    console.log("under submit: ",values);
+  submit(values, dispatch ){    
     return new Promise((resolve, reject) =>{
       dispatch({
         type: 'CREATE_POST',
@@ -45,9 +43,7 @@ class PostNew extends Component {
         reject
       });
     })
-    .then(()=>{
-      console.log(this.props);
-      console.log(this);
+    .then(()=>{      
       this.props.router.push('/');
     })
     .catch((error) =>{
