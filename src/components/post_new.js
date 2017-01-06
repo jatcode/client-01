@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
-import { Message } from 'semantic-ui-react';
+import { Message, Header, Icon } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router';
 
 import {  createPost } from '../actions/index';
@@ -54,20 +54,24 @@ class PostNew extends Component {
         // what you do about other communication errors is up to you
       }
     });
-    // <form onSubmit={handleSubmit(this.submit.bind(this))}>
   }
   render() {
     // const { handleSubmit } = this.props;    
     const { handleSubmit, pristine, reset, submitting }= this.props;
     return (      
       <div>
-        <div className='text-xs-right'>
-          <Link to='/' className='btn btn-primary'>
+        <div  className='ui compact menu'>
+          <Link to='/' className='item'>
             home
           </Link>
         </div>
         <div >
-          <h3>Create a new Post</h3>
+          <Header as='h2' icon textAlign='center'>
+            <Icon name='users' circular />
+            <Header.Content>
+              Create a new Post
+            </Header.Content>
+          </Header>
         </div>
         <form onSubmit={handleSubmit(this.submit.bind(this))}>
           <Field name='title' component={this.myInput} />
@@ -75,8 +79,10 @@ class PostNew extends Component {
           <Field name='content' component={this.myTextarea} />              
             
           <br/>
-          <button type='submit' disabled={submitting}>Submit</button>
-          <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+          <div className='ui center aligned'>
+            <button type='submit' disabled={submitting}>Submit</button>
+            <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+          </div>
         </form>
       </div>
     );

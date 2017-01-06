@@ -1,23 +1,6 @@
 import { takeEvery} from 'redux-saga';
 import { fork, call, put } from 'redux-saga/effects';
-import axios from 'axios';
-// import {createPost } from '../actions/index'
-// import { request  } from 'superagent';
-
-const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
-const API_KEY = '?key=jatas123';
-function createPost(props) {
-  return  axios
-      .post(`${ROOT_URL}/posts/${API_KEY}`, props)
-      .then((data)=>{
-        return {
-          status: data.status,
-          message:data.statusText,
-          object: data.data
-        };
-      })
-      .catch((error)=>console.log(error));  
-}
+import {createPost } from '../actions/index'
 
 
 function* callCreateNewPost({values, resolve, reject, ...rest}){  
@@ -33,6 +16,15 @@ function* callCreateNewPost({values, resolve, reject, ...rest}){
 function* createNewPostSaga(){
   yield*  takeEvery('CREATE_POST',callCreateNewPost);
 }
+
+export default function*  root(){
+  yield[ 
+    fork(createNewPostSaga), 
+    // mySaga(),
+    
+  ] 
+}
+
 // //worker SAGA
 // function* executingSaga () {
 //   // body...
@@ -42,11 +34,3 @@ function* createNewPostSaga(){
 //   console.log('redux-saga entrando fuerte.... como');
 //   yield takeEvery('CREATE_ACTION', executingSaga)
 // }
-export default function*  root(){
-  yield[ 
-    fork(createNewPostSaga), 
-    // mySaga(),
-    
-  ] 
-}
-

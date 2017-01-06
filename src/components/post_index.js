@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+// import { List  } from 'semantic-ui-react'
 import { fetchPost } from '../actions/index';
 
 
@@ -13,10 +14,13 @@ class PostsIndex extends Component {
   renderPosts(){  
     return this.props.posts.map((post)=>{
       return (
-        <li key={post.id}>
-          <span>titulo</span>
-          <span>{post.categories}</span>
+        <li key={post.id} className='item'>        
+          <Link to={'/post/'+ post.id}>
+            <span className='header'>{post.title}</span>
+          <span className='content'>{post.categories}</span>
+          </Link>
         </li>
+
       );
     });
   }
@@ -24,16 +28,16 @@ class PostsIndex extends Component {
   render(){
     return(
       <div>
-        <div className='text-xs-right'>
-          <Link to='/post/new' className='btn btn-primary'>
+        <div className='ui compact menu'>
+          <Link to='/post/new' className='link item'>
             Add new Post
           </Link>
         </div>
+        <h3 className>Posts</h3> 
         <div>
-          <h3>Posts</h3> 
-          <ul>            
+          <div className='ui divided middle aligned selection list'>
             {this.renderPosts()}
-          </ul>
+          </div>
         </div>
       </div>  
     );
