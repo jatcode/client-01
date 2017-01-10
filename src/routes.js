@@ -5,6 +5,7 @@ import App from './components/App';
 import PostList from './components/post_index';
 import PostNew from './components/post_new';
 import PostShow from './components/post_show';
+import TodoList from './components/TodoList';
 
 
 
@@ -13,6 +14,7 @@ export default (
     <IndexRoute component={PostList}/>
     <Route path="/post/new" component={PostNew}/>
     <Route path="/post/:id" component={PostShow}/>
+    <Route path="/todos/list" component={TodoList}/>
   </Route>
 );
   

@@ -5,9 +5,15 @@ export const CREATE_POST = 'CREATE_POST';
 export const CREATE_POST_DONE = 'CREATE_POST_DONE';
 export const FETCH_ONE_POST = 'FETCH_ONE_POST';
 export const DELETE_THIS_POST = 'DELETE_THIS_POST';
+//TODOS RELATED
+export const FETCH_TODOS = 'FETCH_TODOS';
+export const DELETE_TODO = 'DELETE_TODO';
+export const ADD_TODO = 'ADD_TODO';
+export const UPDATE_TODO = 'UPDATE_TODO';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=jatas123';
+const TODOS_URL = 'http://localhost:3030/todos';
 
 export function fetchPost () {
   const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
@@ -16,14 +22,6 @@ export function fetchPost () {
     payload: request
   });
 }
-
-// export function createPost(props) {
-//   const request = axios.post(`${ROOT_URL}/posts/${API_KEY}`, props);
-//   return {
-//     type: 'CREATE_POST',
-//     payload: request
-//   };
-// }
 
 export function createPost(props) {
   return  axios
@@ -54,3 +52,10 @@ export function deleteThisPost (id) {
     payload: request
   });
 }
+
+/*************TODOS RELATED*********************/
+export function getAlltodos(){
+  const request = axios.get(`${TODOS_URL}`);
+  return( { payload: request});
+}
+/*************TODOS RELATED*********************/

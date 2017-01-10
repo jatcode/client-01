@@ -1,6 +1,6 @@
 import { takeEvery} from 'redux-saga';
 import { fork, call, put } from 'redux-saga/effects';
-import {createPost } from '../actions/index'
+import {createPost, getAlltodos } from '../actions/index'
 
 
 function* callCreateNewPost({values, resolve, reject, ...rest}){  
@@ -17,9 +17,25 @@ function* createNewPostSaga(){
   yield*  takeEvery('CREATE_POST',callCreateNewPost);
 }
 
+function* callFecthTodos({resolve, reject}){
+  const result = yield call (getAlltodos );
+  if(result){
+    console.log(result);
+    yield put({type:'FETCH_TODOS_READY',payload: result});
+    yield call(resolve);
+  }else{
+    yield call (reject, {type:'FETCH_TODOS_FAIL',result})
+  }
+}
+
+function* getTodosSaga(){
+  yield* takeEvery('FETCH_TODOS',callFecthTodos);
+}
+
 export default function*  root(){
   yield[ 
     fork(createNewPostSaga), 
+    fork(getTodosSaga), 
     // mySaga(),
     
   ] 
