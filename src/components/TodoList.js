@@ -7,12 +7,11 @@ class TodoList extends  Component {
   constructor(props) {
     super(props)    
   this._fetchTodos.bind(this); 
-  console.log(this.props);
+	this.props.getAlltodos();
   }
 
 _fetchTodos(){  
-  console.log(this);
-  console.log(this);
+  console.log(this.props);
 }
   
   
