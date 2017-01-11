@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import {routerReducer} from 'react-router-redux';
 import PostReducer from './reducer_post';
 import TodosReducer from './TodosReducer';
 
@@ -10,7 +11,8 @@ import TodosReducer from './TodosReducer';
 const rootReducer = combineReducers({	
 	posts: PostReducer,
 	form: formReducer,
-	todos: TodosReducer
+	todosStore: TodosReducer,
+	routing: routerReducer
 });
 
 export default rootReducer;

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 // import { List  } from 'semantic-ui-react'
 import { fetchPost } from '../actions/index';
-
+import { MyLink } from './MyComponents';
 
 class PostsIndex extends Component { 
   //react lifecycle  when component is about to mount  
@@ -28,11 +28,8 @@ class PostsIndex extends Component {
   render(){
     return(
       <div>
-        <div className='ui compact menu'>
-          <Link to='/post/new' className='link item'>
-            Add new Post
-          </Link>
-        </div>
+        <MyLink toValue='/post/new' label='Add new Post'/>
+        <MyLink toValue='/todos/list' label='Todos List'/>
         <h3 className>Posts</h3> 
         <div>
           <div className='ui divided middle aligned selection list'>

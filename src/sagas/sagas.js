@@ -1,7 +1,8 @@
 import { takeEvery} from 'redux-saga';
 import { fork, call, put } from 'redux-saga/effects';
-import {createPost, getAlltodos } from '../actions/index'
-
+import {createPost } from '../actions/index';
+import { getTodosList } from '../services/TodosAPI';
+import {GET_TODO_LIST, GET_TODO_LIST_SUCCEEDED, GET_TODO_LIST_FAILED } from '../actions/actions';
 
 function* callCreateNewPost({values, resolve, reject, ...rest}){  
   const result = yield  call(createPost,values);
@@ -17,25 +18,26 @@ function* createNewPostSaga(){
   yield*  takeEvery('CREATE_POST',callCreateNewPost);
 }
 
-function* callFecthTodos({resolve, reject}){
-  const result = yield call (getAlltodos );
+function* callFecthTodos(feathersApp){
+  const result = yield call (getTodosList,feathersApp);
   if(result){
     console.log(result);
-    yield put({type:'FETCH_TODOS_READY',payload: result});
-    yield call(resolve);
-  }else{
-    yield call (reject, {type:'FETCH_TODOS_FAIL',result})
-  }
+    // yield put({type:GET_TODO_LIST_SUCCEEDED,payload: result});
+    // yield call(resolve);
+  // }else{
+  //   yield call (reject, {type:GET_TODO_LIST_FAILED,result})
+ }
 }
 
-function* getTodosSaga(){
-  yield* takeEvery('FETCH_TODOS',callFecthTodos);
+function* getTodosSaga(feathersApp){
+  console.log(feathersApp);
+  yield* takeEvery(GET_TODO_LIST,callFecthTodos,feathersApp);
 }
 
-export default function*  root(){
+export default function*  root(feathersApp){
   yield[ 
-    fork(createNewPostSaga), 
-    fork(getTodosSaga), 
+    // fork(createNewPostSaga), 
+    fork(getTodosSaga,feathersApp), 
     // mySaga(),
     
   ] 

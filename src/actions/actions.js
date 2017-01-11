@@ -1,0 +1,9 @@
+
+
+export const GET_TODO_LIST = 'GET_TODO_LIST';
+export const GET_TODO_LIST_SUCCEEDED = 'GET_TODO_LIST_SUCCEEDED';
+export const GET_TODO_LIST_FAILED = 'GET_TODO_LIST_FAILED';
+
+export const DELETE_TODO = 'DELETE_TODO';
+export const ADD_TODO = 'ADD_TODO';
+export const UPDATE_TODO = 'UPDATE_TODO';

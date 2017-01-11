@@ -6,7 +6,10 @@ export const CREATE_POST_DONE = 'CREATE_POST_DONE';
 export const FETCH_ONE_POST = 'FETCH_ONE_POST';
 export const DELETE_THIS_POST = 'DELETE_THIS_POST';
 //TODOS RELATED
-export const FETCH_TODOS = 'FETCH_TODOS';
+export const GET_TODO_LIST = 'GET_TODO_LIST';
+export const GET_TODO_LIST_SUCCEEDED = 'GET_TODO_LIST_SUCCEEDED';
+export const GET_TODO_LIST_FAILED = 'GET_TODO_LIST_FAILED';
+
 export const DELETE_TODO = 'DELETE_TODO';
 export const ADD_TODO = 'ADD_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
@@ -54,8 +57,11 @@ export function deleteThisPost (id) {
 }
 
 /*************TODOS RELATED*********************/
-export function getAlltodos(){
-  const request = axios.get(`${TODOS_URL}`);
-  return( { payload: request});
+// export function getAlltodos(){
+//   const request = axios.get(`${TODOS_URL}`);
+//   return( { payload: request});
+// }
+export function getAlltodos(){  
+  return( { type: 'GET_TODO_LIST' });
 }
 /*************TODOS RELATED*********************/
