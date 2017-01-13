@@ -14,12 +14,10 @@ import TodoEdit from './components/TodoEdit';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
-    <Route path="/post/new" component={PostNew}/>
-    <Route path="/post/:id" component={PostShow}/>
     <Route path="/todos/list" component={TodoList}/>
     <Route path="/todos/edit/:id" component={TodoEdit}/>
     <Route path="/todos/del/:id" component={TodoList}/>
-    <Route path="/todos/add" component={TodoList}/>
-  </Route>
+    <Route path="/todos/new" component={TodoList}/>
+  </Route>  
 );
   

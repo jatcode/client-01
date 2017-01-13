@@ -24,10 +24,10 @@ const createStoreWithMiddleware = applyMiddleware(
 )(createStore);
 const defaultStore = {};
 const store = createStoreWithMiddleware(
-          rootReducer,
-          defaultStore,
-          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-        );
+  rootReducer,
+  defaultStore,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
         //Feathers configuration
 const feathersHost = 'http://10.190.8.190:3030';

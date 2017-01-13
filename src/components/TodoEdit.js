@@ -7,15 +7,20 @@ import { Message, Header, Icon } from 'semantic-ui-react';
 
 import { MyInput, MyTextarea } from './MyComponents';
 
+import TodoAdd from './TodoAdd';
+
 class TodoEdit extends Component {
 	constructor(props){
 		super(props)
-		console.log('this is the id ',this.props.params.id)
-		console.log('this is PROPS ',this.props)
+		const {id} =this.props.params;
+		// console.log('this is the id on TodoEdit ',this.props.params.id)
+		console.log('this is the id on TodoEdit ',id)
 	}
 	render(){
 		return(
-			<div>HEY</div>
+			<div>HEY
+				<TodoAdd props={this.props} />
+			</div>
 		);
 	}
 }

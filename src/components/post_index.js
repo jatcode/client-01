@@ -28,7 +28,7 @@ class PostsIndex extends Component {
   render(){
     return(
       <div>
-        <MyLink toValue='/post/new' label='Add new Post'/>
+        <MyLink /*coment*/ toValue='/post/new' label='Add new Post'/>
         <MyLink toValue='/todos/list' label='Todos List'/>
         <h3 className>Posts</h3> 
         <div>
