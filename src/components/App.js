@@ -6,7 +6,7 @@ import Main  from './Main';
 
 function mapStateToProps(state){
   return {
-    todos: state.todosStore
+    todos: state.todos
   }
 }
 function mapDispatchToProps(dispatch){

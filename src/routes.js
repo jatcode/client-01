@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import PostList from './components/post_index';
+// import PostList from './components/post_index';
 import Home from './components/Home';
 import PostNew from './components/post_new';
 import PostShow from './components/post_show';

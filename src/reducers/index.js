@@ -11,7 +11,7 @@ import TodosReducer from './TodosReducer';
 const rootReducer = combineReducers({	
 	posts: PostReducer,
 	form: formReducer,
-	todosStore: TodosReducer,
+	todos: TodosReducer,
 	routing: routerReducer
 });
 
