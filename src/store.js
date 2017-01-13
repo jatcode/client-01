@@ -30,7 +30,8 @@ const store = createStoreWithMiddleware(
         );
 
         //Feathers configuration
-const feathersHost = 'http://localhost:3030';
+const feathersHost = 'http://10.190.8.190:3030';
+// const feathersHost = 'http://localhost:3030';
 export const app = feathers()
   .configure(rest(feathersHost).superagent(superagent))
   .configure(feathers.hooks());  

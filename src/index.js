@@ -5,17 +5,15 @@ import { Router  } from 'react-router';
 import store, { history } from './store';
 import routes from './routes';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
+// injectTapEventPlugin();
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 ReactDOM.render(
-  <MuiThemeProvider>
     <Provider store={store}>
       <Router history={history} routes={routes}/>
           
     </Provider>
-  </MuiThemeProvider>
   , document.getElementById('root') 
 );

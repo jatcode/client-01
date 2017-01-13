@@ -16,7 +16,6 @@ export const UPDATE_TODO = 'UPDATE_TODO';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=jatas123';
-// const TODOS_URL = 'http://10.190.8.190:3030/todos';
 
 export function fetchPost () {
   const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);

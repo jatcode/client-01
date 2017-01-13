@@ -1,10 +1,7 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
+import { Card } from 'semantic-ui-react';
 import { getAlltodos } from '../actions/index';
-
-import {List, ListItem} from 'material-ui/List';
-
-import Paper from 'material-ui/Paper';
 
 
 class TodoList extends  Component {
@@ -20,25 +17,26 @@ class TodoList extends  Component {
   }
   _editThisItem(e,item){
     console.log(e.target);
-    alert(item);
+    console.log(item);
   }
   _renderListItems(item){
     const {_id, description, todo } = item;
     return(
-      <ListItem key={_id}
-          primaryText={todo} 
-          secondaryText={description}
-          secondaryTextLines={1} onClick={this._editThisItem(_id)} >
-            
-      </ListItem>
+      <Card key={_id}
+          header={todo} 
+          meta={description}
+          onClick={this._editThisItem(_id)} 
+					description={description.substring(0,100)+ '...'}
+					raised={true}
+					href={'/todos/edit/'+_id}
+			/>
     );
   }  
   render(){
     return(
-      <Paper  zDepth={5} >
+      <Card.Group itemsPerRow={5} >
         {this.props.todos.allTodos.map(this._renderListItems )}
-              
-      </Paper>
+      </Card.Group>
     );
   }
 }
